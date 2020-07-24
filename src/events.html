@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Chartist Case Study - Events</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      .ct-chart {
+        height: 20rem;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../">← Back</a>
+    <h1>Chartist Case Study - Events</h1>
+
+    <p>...</p>
+
+    <h2>Draw</h2>
+    <p>...</p>
+    <div id="draw" class="ct-chart"></div>
+
+    <script src="vendor/chartist.min.js"></script>
+    <script>
+      var data = {
+        labels: ['A', 'B', 'C', 'D'],
+        series: [[5, 10, 8, 3]],
+      };
+
+      new Chartist.Bar('#vertical', data);
+    </script>
+  </body>
+</html>
