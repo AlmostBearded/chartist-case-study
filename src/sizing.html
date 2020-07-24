@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Chartist Case Study - Sizing</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <style>
+    .fixed-size {
+      width: 50rem;
+      height: 25rem;
+    }
+
+    .fixed-height {
+      width: 100%;
+      height: 25rem;
+    }
+  </style>
+  <body>
+    <a href="../">← Back</a>
+    <h1>Chartist Case Study - Sizing</h1>
+    <p>These examples experiment with different chart sizing variants.</p>
+
+    <h2>Default Size</h2>
+    <p>
+      Neither width nor height are specified. The sizing of this likely depends on the browser and
+      so it should probably be avoided. It is better to be more explicit.
+    </p>
+    <div class="ct-chart"></div>
+
+    <h2>Fixed Size</h2>
+    <p>Both width and height are specified in absolute units.</p>
+    <div class="ct-chart fixed-size"></div>
+
+    <h2>Fixed Height</h2>
+    <p>Only height is specified in absolute units. The width of the chart is fluid.</p>
+    <div class="ct-chart fixed-height"></div>
+
+    <h2>Aspect Ratio</h2>
+    <p>Both width and height are fluid but a specific aspect ratio between them is maintained.</p>
+    <div class="ct-chart ct-minor-seventh"></div>
+
+    <script src="vendor/chartist.min.js"></script>
+    <script>
+      var data = {
+        labels: [1, 2, 3, 6],
+        series: [[5, 2, 8, 3]],
+      };
+
+      var chartElements = document.getElementsByClassName('ct-chart');
+      for (var i = 0; i < chartElements.length; ++i) {
+        new Chartist.Bar(chartElements[i], data);
+      }
+    </script>
+  </body>
+</html>
