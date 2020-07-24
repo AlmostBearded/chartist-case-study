@@ -16,27 +16,27 @@
 
     <p>These examples experiment with different configurations of bar charts.</p>
 
-    <h2>Vertical</h2>
+    <h2>Two-Dimensional Vertical</h2>
     <p>A bar chart with vertical bars.</p>
-    <div id="vertical" class="ct-chart"></div>
+    <div id="two-dimensional-vertical" class="ct-chart"></div>
 
-    <h2>Horizontal</h2>
+    <h2>Two-Dimensional Horizontal</h2>
     <p>A bar chart with horizontal bars.</p>
-    <div id="horizontal" class="ct-chart"></div>
+    <div id="two-dimensional-horizontal" class="ct-chart"></div>
 
-    <h2>Multi-Dimensional</h2>
+    <h2>Multi-Dimensional Vertical</h2>
     <p>A bar chart with vertical bars and multi-dimensional data.</p>
-    <div id="multi-dimensional" class="ct-chart"></div>
+    <div id="multi-dimensional-vertical" class="ct-chart"></div>
 
-    <h2>Multi-Dimensional Stacked</h2>
+    <h2>Multi-Dimensional Stacked Vertical</h2>
     <p>A bar chart with stacked vertical bars and multi-dimensional data.</p>
-    <div id="multi-dimensional-stacked" class="ct-chart"></div>
+    <div id="multi-dimensional-stacked-vertical" class="ct-chart"></div>
 
-    <h2>Bi-Polar</h2>
+    <h2>Bi-Polar Vertical</h2>
     <p>A bar chart with vertical bars and bi-polar data.</p>
-    <div id="bi-polar" class="ct-chart"></div>
+    <div id="bi-polar-vertical" class="ct-chart"></div>
 
-    <h2>Distributed</h2>
+    <h2>Distributed Vertical</h2>
     <p>A bar chart with one vertical bar per series.</p>
     <p>
       <em>
@@ -44,7 +44,11 @@
         are for bar charts with distributed data.
       </em>
     </p>
-    <div id="distributed" class="ct-chart"></div>
+    <div id="distributed-vertical" class="ct-chart"></div>
+
+    <h2>Responsive Bar Distances</h2>
+    <p>A bar chart with multi-dimensional data and responsive bar distances.</p>
+    <div id="responsive-bar-distances" class="ct-chart"></div>
 
     <script src="vendor/chartist.min.js"></script>
     <script>
@@ -53,8 +57,8 @@
         series: [[5, 10, 8, 3]],
       };
 
-      new Chartist.Bar('#vertical', twoDimensionalData);
-      new Chartist.Bar('#horizontal', twoDimensionalData, { horizontalBars: true });
+      new Chartist.Bar('#two-dimensional-vertical', twoDimensionalData);
+      new Chartist.Bar('#two-dimensional-horizontal', twoDimensionalData, { horizontalBars: true });
 
       var multiDimensionalData = {
         labels: ['A', 'B', 'C', 'D'],
@@ -65,22 +69,44 @@
         ],
       };
 
-      new Chartist.Bar('#multi-dimensional', multiDimensionalData);
-      new Chartist.Bar('#multi-dimensional-stacked', multiDimensionalData, { stackBars: true });
+      new Chartist.Bar('#multi-dimensional-vertical', multiDimensionalData);
+      new Chartist.Bar('#multi-dimensional-stacked-vertical', multiDimensionalData, {
+        stackBars: true,
+      });
 
       var biPolarData = {
         labels: ['A', 'B', 'C', 'D'],
         series: [[-5, 10, 8, -3]],
       };
 
-      new Chartist.Bar('#bi-polar', biPolarData);
+      new Chartist.Bar('#bi-polar-vertical', biPolarData);
 
       var distributedData = {
         labels: ['A', 'B', 'C', 'D'],
         series: [5, 10, 8, 3],
       };
 
-      new Chartist.Bar('#distributed', distributedData, { distributeSeries: true });
+      new Chartist.Bar('#distributed-vertical', distributedData, { distributeSeries: true });
+
+      new Chartist.Bar(
+        '#responsive-bar-distances',
+        multiDimensionalData,
+        { seriesBarDistance: 10 },
+        [
+          [
+            'screen and (min-width: 40rem)',
+            {
+              seriesBarDistance: 15,
+            },
+          ],
+          [
+            'screen and (min-width: 60rem)',
+            {
+              seriesBarDistance: 25,
+            },
+          ],
+        ]
+      );
     </script>
   </body>
 </html>
