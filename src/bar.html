@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Chartist Case Study - Bar Charts</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      .ct-chart {
+        height: 20rem;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../">← Back</a>
+    <h1>Chartist Case Study - Bar Charts</h1>
+
+    <p>These examples experiment with different configurations of bar charts.</p>
+
+    <h2>Vertical</h2>
+    <p>A bar chart with vertical bars.</p>
+    <div id="vertical" class="ct-chart"></div>
+
+    <h2>Horizontal</h2>
+    <p>A bar chart with horizontal bars.</p>
+    <div id="horizontal" class="ct-chart"></div>
+
+    <h2>Multi-Dimensional</h2>
+    <p>A bar chart with vertical bars and multi-dimensional data.</p>
+    <div id="multi-dimensional" class="ct-chart"></div>
+
+    <h2>Multi-Dimensional Stacked</h2>
+    <p>A bar chart with stacked vertical bars and multi-dimensional data.</p>
+    <div id="multi-dimensional-stacked" class="ct-chart"></div>
+
+    <h2>Bi-Polar</h2>
+    <p>A bar chart with vertical bars and bi-polar data.</p>
+    <div id="bi-polar" class="ct-chart"></div>
+
+    <h2>Distributed</h2>
+    <p>A bar chart with one vertical bar per series.</p>
+    <p>
+      <em>
+        TODO: Elaborate on the difference to simple two-dimensional charts and which use cases there
+        are for bar charts with distributed data.
+      </em>
+    </p>
+    <div id="distributed" class="ct-chart"></div>
+
+    <script src="vendor/chartist.min.js"></script>
+    <script>
+      var twoDimensionalData = {
+        labels: ['A', 'B', 'C', 'D'],
+        series: [[5, 10, 8, 3]],
+      };
+
+      new Chartist.Bar('#vertical', twoDimensionalData);
+      new Chartist.Bar('#horizontal', twoDimensionalData, { horizontalBars: true });
+
+      var multiDimensionalData = {
+        labels: ['A', 'B', 'C', 'D'],
+        series: [
+          [5, 2, 8, 3],
+          [1, 10, 4, 5],
+          [7, 3, 5, 1],
+        ],
+      };
+
+      new Chartist.Bar('#multi-dimensional', multiDimensionalData);
+      new Chartist.Bar('#multi-dimensional-stacked', multiDimensionalData, { stackBars: true });
+
+      var biPolarData = {
+        labels: ['A', 'B', 'C', 'D'],
+        series: [[-5, 10, 8, -3]],
+      };
+
+      new Chartist.Bar('#bi-polar', biPolarData);
+
+      var distributedData = {
+        labels: ['A', 'B', 'C', 'D'],
+        series: [5, 10, 8, 3],
+      };
+
+      new Chartist.Bar('#distributed', distributedData, { distributeSeries: true });
+    </script>
+  </body>
+</html>
