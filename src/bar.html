@@ -8,13 +8,21 @@
         height: 20rem;
         width: 100%;
       }
+
+      @media screen and (min-width: 30rem) and (max-width: 40rem) {
+        #full-responsive {
+          height: 40rem;
+        }
+      }
     </style>
   </head>
   <body>
     <a href="../">← Back</a>
     <h1>Chartist Case Study - Bar Charts</h1>
 
-    <p>These examples experiment with different configurations of bar charts.</p>
+    <p>
+      These examples experiment with different configurations of bar charts.
+    </p>
 
     <h2>Two-Dimensional Vertical</h2>
     <p>A bar chart with vertical bars.</p>
@@ -40,8 +48,8 @@
     <p>A bar chart with one vertical bar per series.</p>
     <p>
       <em>
-        TODO: Elaborate on the difference to simple two-dimensional charts and which use cases there
-        are for bar charts with distributed data.
+        TODO: Elaborate on the difference to simple two-dimensional charts and
+        which use cases there are for bar charts with distributed data.
       </em>
     </p>
     <div id="distributed-vertical" class="ct-chart"></div>
@@ -50,52 +58,122 @@
     <p>A bar chart with multi-dimensional data and responsive bar distances.</p>
     <div id="responsive-bar-distances" class="ct-chart"></div>
 
+    <h2>Full Responsive</h2>
+    <p>
+      A bar chart with multi-dimensional data and multiple responsive
+      optimizations.
+    </p>
+    <div id="full-responsive" class="ct-chart"></div>
+
     <script src="vendor/chartist.min.js"></script>
     <script>
       var twoDimensionalData = {
-        labels: ['A', 'B', 'C', 'D'],
-        series: [[5, 10, 8, 3]],
+        labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+        series: [[5, 10, 8, 3, 6, 3, 9]],
       };
 
       new Chartist.Bar('#two-dimensional-vertical', twoDimensionalData);
-      new Chartist.Bar('#two-dimensional-horizontal', twoDimensionalData, { horizontalBars: true });
+      new Chartist.Bar('#two-dimensional-horizontal', twoDimensionalData, {
+        horizontalBars: true,
+      });
 
       var multiDimensionalData = {
-        labels: ['A', 'B', 'C', 'D'],
+        labels: [
+          'Label A',
+          'Label B',
+          'Label C',
+          'Label D',
+          'Label E',
+          'Label F',
+          'Label G',
+        ],
         series: [
-          [5, 2, 8, 3],
-          [1, 10, 4, 5],
-          [7, 3, 5, 1],
+          [5, 2, 8, 3, 7, 2, 1],
+          [1, 10, 4, 5, 9, 8, 4],
+          [7, 3, 5, 1, 5, 3, 7],
+          [5, 1, 9, 7, 3, 5, 4],
+          [3, 4, 1, 5, 6, 7, 2],
         ],
       };
 
       new Chartist.Bar('#multi-dimensional-vertical', multiDimensionalData);
-      new Chartist.Bar('#multi-dimensional-stacked-vertical', multiDimensionalData, {
-        stackBars: true,
-      });
+      new Chartist.Bar(
+        '#multi-dimensional-stacked-vertical',
+        multiDimensionalData,
+        {
+          stackBars: true,
+        }
+      );
 
       var biPolarData = {
-        labels: ['A', 'B', 'C', 'D'],
-        series: [[-5, 10, 8, -3]],
+        labels: [
+          'Label A',
+          'Label B',
+          'Label C',
+          'Label D',
+          'Label E',
+          'Label F',
+          'Label G',
+        ],
+        series: [[-5, 10, 8, -3, -6, -4, 2]],
       };
 
       new Chartist.Bar('#bi-polar-vertical', biPolarData);
 
       var distributedData = {
-        labels: ['A', 'B', 'C', 'D'],
-        series: [5, 10, 8, 3],
+        labels: [
+          'Label A',
+          'Label B',
+          'Label C',
+          'Label D',
+          'Label E',
+          'Label F',
+          'Label G',
+        ],
+        series: [5, 10, 8, 3, 1, 2, 6],
       };
 
-      new Chartist.Bar('#distributed-vertical', distributedData, { distributeSeries: true });
+      new Chartist.Bar('#distributed-vertical', distributedData, {
+        distributeSeries: true,
+      });
 
       new Chartist.Bar(
         '#responsive-bar-distances',
         multiDimensionalData,
-        { seriesBarDistance: 10 },
+        { seriesBarDistance: 11 },
         [
           [
             'screen and (min-width: 40rem)',
             {
+              seriesBarDistance: 15,
+            },
+          ],
+          [
+            'screen and (min-width: 60rem)',
+            {
+              seriesBarDistance: 25,
+            },
+          ],
+        ]
+      );
+
+      new Chartist.Bar(
+        '#full-responsive',
+        multiDimensionalData,
+        { stackBars: true },
+        [
+          [
+            'screen and (min-width: 30rem)',
+            {
+              stackBars: false,
+              horizontalBars: true,
+              seriesBarDistance: 12,
+            },
+          ],
+          [
+            'screen and (min-width: 40rem)',
+            {
+              horizontalBars: false,
               seriesBarDistance: 15,
             },
           ],
