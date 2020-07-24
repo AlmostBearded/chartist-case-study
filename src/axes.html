@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Chartist Case Study - Axes</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      .ct-chart {
+        height: 20rem;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../">← Back</a>
+    <h1>Chartist Case Study - Axes</h1>
+
+    <p>These examples experiment with different axis configurations.</p>
+
+    <h2>Position</h2>
+    <p>The position of axes can be specified.</p>
+    <div id="position" class="ct-chart"></div>
+
+    <h2>Label Interpolation</h2>
+    <p>Custom axis label interpolation functions can be specified.</p>
+    <div id="label-interpolation" class="ct-chart"></div>
+
+    <h2>Responsive Label Interpolation</h2>
+    <p>Custom axis label interpolation functions can be specified for different media queries.</p>
+    <div id="responsive-label-interpolation" class="ct-chart"></div>
+
+    <script src="vendor/chartist.min.js"></script>
+    <script>
+      var data = {
+        labels: ['Label A', 'Label B', 'Label C', 'Label D'],
+        series: [[5, 10, 8, 3]],
+      };
+
+      new Chartist.Bar('#position', data, {
+        axisX: { position: 'start' },
+        axisY: { position: 'end' },
+      });
+
+      new Chartist.Bar('#label-interpolation', data, {
+        axisY: {
+          labelInterpolationFnc: function (value) {
+            return value + '$';
+          },
+        },
+      });
+
+      new Chartist.Bar(
+        '#responsive-label-interpolation',
+        data,
+        {
+          axisX: {
+            labelInterpolationFnc: function (value) {
+              return value[value.length - 1];
+            },
+          },
+        },
+        [
+          [
+            'screen and (min-width: 40rem)',
+            {
+              axisX: {
+                labelInterpolationFnc: function (value) {
+                  return value;
+                },
+              },
+            },
+          ],
+        ]
+      );
+    </script>
+  </body>
+</html>
