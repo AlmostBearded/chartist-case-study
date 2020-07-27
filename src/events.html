@@ -17,17 +17,37 @@
     <p>...</p>
 
     <h2>Draw</h2>
-    <p>...</p>
-    <div id="draw" class="ct-chart"></div>
+    <p>Allows modification of all elements while they are drawn.</p>
+
+    <div id="draw-bar-labels" class="ct-chart"></div>
 
     <script src="vendor/chartist.min.js"></script>
     <script>
       var data = {
-        labels: ['A', 'B', 'C', 'D'],
-        series: [[5, 10, 8, 3]],
+        labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+        series: [[5, 10, 8, 3, 6, 3, 9]],
       };
 
-      new Chartist.Bar('#vertical', data);
+      var chart = new Chartist.Bar('#draw-bar-labels', data, {
+        chartPadding: {
+          top: 30,
+        },
+      });
+      chart.on('draw', function (data) {
+        if (data.type === 'bar') {
+          data.group
+            .elem(
+              'text',
+              {
+                x: data.x1 + (data.x2 - data.x1) / 2,
+                y: data.y2 - 5,
+                style: 'text-anchor: middle',
+              },
+              'ct-label bar-label'
+            )
+            .text(data.value.y);
+        }
+      });
     </script>
   </body>
 </html>
