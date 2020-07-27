@@ -9,7 +9,7 @@
         width: 100%;
       }
 
-      @media screen and (min-width: 30rem) and (max-width: 40rem) {
+      @media screen and (max-width: 40rem) {
         #full-responsive {
           height: 40rem;
         }
@@ -48,8 +48,8 @@
     <p>A bar chart with one vertical bar per series.</p>
     <p>
       <em>
-        TODO: Elaborate on the difference to simple two-dimensional charts and
-        which use cases there are for bar charts with distributed data.
+        TODO: Elaborate on the difference to simple two-dimensional charts and which use cases there
+        are for bar charts with distributed data.
       </em>
     </p>
     <div id="distributed-vertical" class="ct-chart"></div>
@@ -60,8 +60,7 @@
 
     <h2>Full Responsive</h2>
     <p>
-      A bar chart with multi-dimensional data and multiple responsive
-      optimizations.
+      A bar chart with multi-dimensional data and multiple responsive optimizations.
     </p>
     <div id="full-responsive" class="ct-chart"></div>
 
@@ -78,15 +77,7 @@
       });
 
       var multiDimensionalData = {
-        labels: [
-          'Label A',
-          'Label B',
-          'Label C',
-          'Label D',
-          'Label E',
-          'Label F',
-          'Label G',
-        ],
+        labels: ['Label A', 'Label B', 'Label C', 'Label D', 'Label E', 'Label F', 'Label G'],
         series: [
           [5, 2, 8, 3, 7, 2, 1],
           [1, 10, 4, 5, 9, 8, 4],
@@ -97,39 +88,19 @@
       };
 
       new Chartist.Bar('#multi-dimensional-vertical', multiDimensionalData);
-      new Chartist.Bar(
-        '#multi-dimensional-stacked-vertical',
-        multiDimensionalData,
-        {
-          stackBars: true,
-        }
-      );
+      new Chartist.Bar('#multi-dimensional-stacked-vertical', multiDimensionalData, {
+        stackBars: true,
+      });
 
       var biPolarData = {
-        labels: [
-          'Label A',
-          'Label B',
-          'Label C',
-          'Label D',
-          'Label E',
-          'Label F',
-          'Label G',
-        ],
+        labels: ['Label A', 'Label B', 'Label C', 'Label D', 'Label E', 'Label F', 'Label G'],
         series: [[-5, 10, 8, -3, -6, -4, 2]],
       };
 
       new Chartist.Bar('#bi-polar-vertical', biPolarData);
 
       var distributedData = {
-        labels: [
-          'Label A',
-          'Label B',
-          'Label C',
-          'Label D',
-          'Label E',
-          'Label F',
-          'Label G',
-        ],
+        labels: ['Label A', 'Label B', 'Label C', 'Label D', 'Label E', 'Label F', 'Label G'],
         series: [5, 10, 8, 3, 1, 2, 6],
       };
 
@@ -160,16 +131,11 @@
       new Chartist.Bar(
         '#full-responsive',
         multiDimensionalData,
-        { stackBars: true },
+        {
+          horizontalBars: true,
+          seriesBarDistance: 12,
+        },
         [
-          [
-            'screen and (min-width: 30rem)',
-            {
-              stackBars: false,
-              horizontalBars: true,
-              seriesBarDistance: 12,
-            },
-          ],
           [
             'screen and (min-width: 40rem)',
             {
