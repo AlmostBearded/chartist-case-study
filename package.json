@@ -14,7 +14,7 @@
     "chartist": "^0.11.4"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.10",
+    "browser-sync": "^2.27.10",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
